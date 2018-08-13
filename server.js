@@ -73,4 +73,4 @@ function parseResults(search, res)
     res.send(results);
 
 }
-app.listen(2000)
+app.listen(process.env.PORT || 2000)
