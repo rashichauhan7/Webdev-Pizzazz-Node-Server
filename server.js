@@ -24,7 +24,7 @@ app.post('/search', function (req, res) {
     const searchRequest = {
         term : term,
         location: location,
-        categories: 'hair, othersalons'
+        categories: 'beautysvc'
     };
 
 
@@ -50,6 +50,11 @@ app.get('/business/:id', function (req, res) {
          .then(response => res.send(response.jsonBody));
 
 })
+app.get('/business/:id/reviews', function (req, res) {
+    client.reviews(req.params['id'])
+        .then(response => res.send(response.jsonBody));
+
+})
 
 app.post('/autocomplete', function (req, res) {
     const text = req.body.text;
@@ -73,4 +78,4 @@ function parseResults(search, res)
     res.send(results);
 
 }
-app.listen(process.env.PORT || 2000)
+app.listen(process.env.PORT || 4000)
